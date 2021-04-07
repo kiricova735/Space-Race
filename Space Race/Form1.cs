@@ -75,7 +75,6 @@ namespace Space_Race
             hero2X = 600;
             hero2Y = 400;
         }
-
         private void SpaceRace_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -133,10 +132,9 @@ namespace Space_Race
                 winLabel.Text = "SPACE RACE";
                 subtitleLabel.Text = "Press Space Bar to Start or Escape to Exit";
             }
+
             else if (gameState == "running")
-
             {
-
                 //hero 1
                 e.Graphics.FillRectangle(whiteBrush, hero1X, hero1Y, heroWidth, heroHeight);
                 //hero 2
@@ -146,35 +144,38 @@ namespace Space_Race
                 {
                     e.Graphics.FillEllipse(whiteBrush, meteorXList[i], meteorYList[i], meteorSize, meteorSize);
                 }
+
                 for (int i = 0; i < meteorXRightList.Count; i++)
                 {
                     e.Graphics.FillEllipse(whiteBrush, meteorXRightList[i], meteorYRightList[i], meteorSize, meteorSize);
                 }
 
-                  if (gameState == "over")
-
+                if (gameState == "over")
                 {
                     winLabel.Text = "GAME OVER";
                     subtitleLabel.Text += "\nPress Space Bar to Start or Escape to Exit";
-                }            
+                }
             }
-        }   
-            private void GameEngine_Tick(object sender, EventArgs e)
+        }
+        private void GameEngine_Tick(object sender, EventArgs e)
         {
             //move hero 1
             if (wDown == true && hero1Y > 5)
             {
                 hero1Y -= heroSpeed;
             }
+
             if (sDown == true && hero1Y < 370)
             {
                 hero1Y += heroSpeed;
             }
+
             //move hero 2
             if (upArrowDown == true && hero2Y > 5)
             {
                 hero2Y -= heroSpeed;
             }
+
             if (downArrowDown == true && hero2Y < 370)
             {
                 hero2Y += heroSpeed;
@@ -217,9 +218,10 @@ namespace Space_Race
                 leftScore.Text = $"{leftPlayerScore}";
                 score.Play();
             }
+
             if (leftPlayerScore == 3)
             {
-                winLabel.Text = "Player One Wins!";             
+                winLabel.Text = "Player One Wins!";
                 gameEngine.Enabled = false;
                 win.Play();
             }
@@ -232,6 +234,7 @@ namespace Space_Race
                 rightScore.Text = $"{rightPlayerScore}";
                 score.Play();
             }
+
             if (rightPlayerScore == 3)
             {
                 winLabel.Text = "Player Two Wins!";
@@ -250,9 +253,10 @@ namespace Space_Race
                 if (hero1Rec.IntersectsWith(meteorLeftRec))
                 {
                     hero1Y = 400;
-                    die.Play();                 
+                    die.Play();
                 }
-                 if (hero2Rec.IntersectsWith(meteorLeftRec))
+
+                if (hero2Rec.IntersectsWith(meteorLeftRec))
                 {
                     hero2Y = 400;
                     die.Play();
@@ -268,6 +272,7 @@ namespace Space_Race
                     hero1Y = 400;
                     die.Play();
                 }
+
                 if (hero2Rec.IntersectsWith(meteorRightRec))
                 {
                     hero2Y = 400;
